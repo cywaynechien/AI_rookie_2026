@@ -1,0 +1,235 @@
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>SPC / MSA 教學報告</title>
+<style>
+body {font-family: Arial, sans-serif; margin: 32px; line-height: 1.6;}
+h1, h2 {color: #075b70;}
+table {border-collapse: collapse; margin: 12px 0 24px;}
+th, td {border: 1px solid #bbb; padding: 7px 10px;}
+th {background: #e8f2f4;}
+.note {background: #eef7f7; padding: 12px;}
+.status {background: #fff2d8; padding: 12px; font-weight: bold;}
+img {max-width: 100%; height: auto;}
+</style>
+</head>
+<body>
+<h1>SPC / MSA 自動分析報告</h1>
+<p class="status">報告狀態：能力分析已完成（教學範例）</p>
+<p>產生時間：2026-10-16T11:08:40+08:00</p>
+
+<h2>1. 中繼資料</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>欄位</th>
+      <th>設定值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>characteristic</td>
+      <td>軸徑</td>
+    </tr>
+    <tr>
+      <td>unit</td>
+      <td>mm</td>
+    </tr>
+    <tr>
+      <td>LSL</td>
+      <td>19.9</td>
+    </tr>
+    <tr>
+      <td>USL</td>
+      <td>20.1</td>
+    </tr>
+    <tr>
+      <td>target</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <td>measurement_system_id</td>
+      <td>GAGE-DEMO-01</td>
+    </tr>
+    <tr>
+      <td>data_version</td>
+      <td>teaching-demo-1.0</td>
+    </tr>
+    <tr>
+      <td>data_source</td>
+      <td>前一個 Python 範例產生的模擬資料</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. 資料檢核警告</h2>
+<ul><li>MSA 資料 缺少 unit 欄；本次依中繼資料宣告單位為 mm，請確認原始資料。</li><li>製程資料 缺少 unit 欄；本次依中繼資料宣告單位為 mm，請確認原始資料。</li><li>製程資料沒有 timestamp 欄；本次只能按子組順序檢查，無法依實際時間、班別或批次追溯。</li><li>製程資料沒有 machine_id 欄；無法比較不同機台或批次。</li><li>製程資料沒有 batch_id 欄；無法比較不同機台或批次。</li><li>MSA 資料 缺少 unit 欄；本次依中繼資料宣告單位為 mm，請確認原始資料。</li><li>製程資料 缺少 unit 欄；本次依中繼資料宣告單位為 mm，請確認原始資料。</li><li>製程資料沒有 timestamp 欄；本次只能按子組順序檢查，無法依實際時間、班別或批次追溯。</li><li>製程資料沒有 machine_id 欄；無法比較不同機台或批次。</li><li>製程資料沒有 batch_id 欄；無法比較不同機台或批次。</li></ul>
+
+<h2>3. MSA 結果</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>MSA 項目</th>
+      <th>結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>零件數</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>作業員數</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>每組重複數</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Gage R&amp;R SD</td>
+      <td>0.00147</td>
+    </tr>
+    <tr>
+      <td>%Study Variation</td>
+      <td>3.12288</td>
+    </tr>
+    <tr>
+      <td>%Tolerance</td>
+      <td>4.40054</td>
+    </tr>
+    <tr>
+      <td>ndc</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td>教學用 MSA 閘門</td>
+      <td>通過</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>方法：</strong>平衡交叉設計 ANOVA 方法矩估計。</p>
+<img src="msa_interaction.png" width="750">
+<h3>ANOVA 表</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum_sq</th>
+      <th>df</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+      <th>mean_sq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C(part)</th>
+      <td>0.119041</td>
+      <td>9</td>
+      <td>8946.25</td>
+      <td>6.70388e-49</td>
+      <td>0.0132268</td>
+    </tr>
+    <tr>
+      <th>C(operator)</th>
+      <td>1.96988e-05</td>
+      <td>2</td>
+      <td>6.66187</td>
+      <td>0.00403581</td>
+      <td>9.84941e-06</td>
+    </tr>
+    <tr>
+      <th>C(part):C(operator)</th>
+      <td>3.67974e-05</td>
+      <td>18</td>
+      <td>1.38271</td>
+      <td>0.21057</td>
+      <td>2.0443e-06</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>4.43543e-05</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.47848e-06</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. 製程穩定性</h2>
+
+    <p>管制圖結果：未發現 3-sigma 界外點</p>
+    <p>X-bar 圖界外子組：[]</p>
+    <p>R 圖界外子組：[]</p>
+    <img src="control_charts.png" width="850">
+    
+
+<h2>5. 製程能力分析</h2>
+
+    <p>常態性檢查 p 值：
+       0.52321
+       （若未執行則無資料）</p>
+    <p>能力指標信賴區間採用子組重抽樣 bootstrap，
+       屬本課程的教學示範方法。</p>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>項目</th>
+      <th>結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>平均值</td>
+      <td>20.01127</td>
+    </tr>
+    <tr>
+      <td>組內標準差</td>
+      <td>0.02119</td>
+    </tr>
+    <tr>
+      <td>整體標準差</td>
+      <td>0.02180</td>
+    </tr>
+    <tr>
+      <td>Cp</td>
+      <td>1.57306</td>
+    </tr>
+    <tr>
+      <td>Cpk</td>
+      <td>1.39581</td>
+    </tr>
+    <tr>
+      <td>Pp</td>
+      <td>1.52907</td>
+    </tr>
+    <tr>
+      <td>Ppk</td>
+      <td>1.35678</td>
+    </tr>
+    <tr>
+      <td>常態模型預估總不良率 (ppm)</td>
+      <td>23.63977</td>
+    </tr>
+  </tbody>
+</table>
+    <img src="capability.png" width="850">
+    
+
+<h2>6. 分析決策紀錄</h2>
+<ul><li>MSA 通過本 Notebook 設定的教學用閘門。</li><li>通過本範例 MSA 與 3-sigma 界限閘門，計算常態模型能力指標。</li></ul>
+
+<h2>7. 限制與假設</h2>
+<div class="note">
+本 Notebook 是教學範例。管制圖目前只檢查 3-sigma 界外點，
+沒有加入 Nelson／WECO 連續點規則。能力指標採常態模型，
+Shapiro-Wilk 檢定 p 值不能單獨證明常態性。
+MSA 門檻、樣本需求與能力判定標準需依實際用途及適用規範確認。
+本範例的資料沒有時間戳記、機台和批次欄位，因此無法進行相應分層分析。
+</div>
+</body>
+</html>
